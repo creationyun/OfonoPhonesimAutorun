@@ -1,6 +1,13 @@
-#!/bin/sh
+#!/bin/bash
+
+filepath=$( realpath "$0"  )
+dir=$( dirname "$filepath" )
+option=$1
 
 echo "Running ofono-phonesim... (1 second)"
-ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &
-sleep 1
-/usr/bin/python3 enable-online-modem.py
+/usr/bin/ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &
+/usr/bin/python3 $dir/enable-online-modem.py
+
+if [ "${option}" == "--service" ]; then
+    sleep infinity
+fi

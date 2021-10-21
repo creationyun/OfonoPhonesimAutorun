@@ -1,0 +1,11 @@
+[Unit]
+Description=Ofono Phonesim Autorun Service
+After=ofono.service
+
+[Service]
+Type=simple
+User=(user)
+ExecStart=/path/to/OfonoPhonesimAutorun/phonesim-autostart.sh --service
+
+[Install]
+WantedBy=multi-user.target
